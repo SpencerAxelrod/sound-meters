@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dual Spectrum + Waveform</title>
+  <style>
+    html,body { margin:0; background:#000; overflow:hidden; }
+
+    #controls {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      width:640px;
+      padding:8px 10px;
+      box-sizing:border-box;
+      background:#111;
+      color:#ddd;
+      font:13px/1 system-ui,sans-serif;
+    }
+
+    #controls button {
+      background:#1b1b1b;
+      color:#eee;
+      border:1px solid #333;
+      border-radius:4px;
+      padding:4px 10px;
+      cursor:pointer;
+    }
+
+    #controls button:disabled {
+      opacity:0.6;
+      cursor:default;
+    }
+
+    #status {
+      opacity:0.8;
+    }
+
+    /* Put canvases side-by-side */
+    #meters {
+      display:flex;
+      width:640px;          /* new doubled width (CSS pixels) */
+      height:160px;
+    }
+
+    canvas {
+      flex:1;               /* each takes 50% of row */
+      display:block;
+      width:320px; height:160px;      /* CSS size */
+    }
+
+    #err {
+      padding:12px;
+      font:14px/1.4 system-ui,sans-serif;
+      color:#ff5252;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <button id="toggle">Start</button>
+    <span id="status">Idle</span>
+  </div>
+
+  <div id="meters">
+    <!-- Canvas bitmap sizes set dynamically by setupCanvas() for DPI scaling -->
+    <canvas id="spec"></canvas>
+    <canvas id="wave"></canvas>
+  </div>
+
+  <div id="err" hidden></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

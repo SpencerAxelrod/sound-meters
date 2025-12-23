@@ -1,15 +1,13 @@
 {
     "name": "Sound Meters",
     "description": "A chrome extension that displays sound meters for a tab",
-    "version": "1.0",
+    "version": "0.1",
     "manifest_version": 3,
     "action": {
       "default_popup": "popup.html"
     },
-    "background": {
-      "service_worker": "background.js"
-    },
     "permissions": [
+      "tabCapture",
       "storage",
       "activeTab"
     ]
