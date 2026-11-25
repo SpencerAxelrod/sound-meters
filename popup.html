@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Dual Spectrum + Waveform</title>
+  <title>Sound Meters</title>
   <style>
     html,body { margin:0; background:#000; overflow:hidden; }
 
@@ -27,26 +27,49 @@
       cursor:pointer;
     }
 
+    #controls button:hover {
+      background:#2a2a2a;
+    }
+
     #controls button:disabled {
       opacity:0.6;
       cursor:default;
+    }
+
+    #controls select {
+      background:#1b1b1b;
+      color:#eee;
+      border:1px solid #333;
+      border-radius:4px;
+      padding:4px 6px;
+      cursor:pointer;
+      font:inherit;
+    }
+
+    #controls label {
+      opacity:0.7;
+      font-size:12px;
     }
 
     #status {
       opacity:0.8;
     }
 
+    .spacer {
+      flex:1;
+    }
+
     /* Put canvases side-by-side */
     #meters {
       display:flex;
-      width:640px;          /* new doubled width (CSS pixels) */
+      width:640px;
       height:160px;
     }
 
     canvas {
-      flex:1;               /* each takes 50% of row */
+      flex:1;
       display:block;
-      width:320px; height:160px;      /* CSS size */
+      width:320px; height:160px;
     }
 
     #err {
@@ -60,16 +83,21 @@
   <div id="controls">
     <button id="toggle">Start</button>
     <span id="status">Idle</span>
+    <span class="spacer"></span>
+    <label for="waveMode">Waveform:</label>
+    <select id="waveMode">
+      <option value="oscilloscope">Oscilloscope</option>
+      <option value="scrolling">Scrolling</option>
+    </select>
   </div>
 
   <div id="meters">
-    <!-- Canvas bitmap sizes set dynamically by setupCanvas() for DPI scaling -->
     <canvas id="spec"></canvas>
     <canvas id="wave"></canvas>
   </div>
 
   <div id="err" hidden></div>
 
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 </html>
