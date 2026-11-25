@@ -1,8 +1,4 @@
-/* popup.js – Main entry point for Sound Meters extension
-   
-   Milestone 1: Fixed audio echo, wired Start/Stop button, status display
-   Milestone 2: Dynamic DPI scaling for crisp rendering on all displays
-   Milestone 3: Waveform display with Oscilloscope and Scrolling modes */
+/* popup.js – Main entry point for Sound Meters extension */
 
 import { setupCanvas, clearCanvas } from './src/viz/canvas-utils.js';
 import { createSpectrumRenderer } from './src/viz/spectrum.js';
@@ -38,7 +34,6 @@ let audioContext = null;
 let animationId = null;
 let isCapturing = false;
 
-// Renderers (created when capture starts)
 let spectrumRenderer = null;
 let waveformRenderer = null;
 
@@ -79,7 +74,6 @@ async function startCapture() {
     const graph = await buildAudioGraph(stream);
     audioContext = graph.context;
 
-    // Create renderers
     spectrumRenderer = createSpectrumRenderer(specCtx, graph.analyser);
     spectrumRenderer.resize(specWidth, specHeight);
 
